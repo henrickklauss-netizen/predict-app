@@ -35,7 +35,15 @@
       document.getElementById("user").innerText =
         "Привет, " + user.first_name;
     }
+let balance = localStorage.getItem("balance");
 
+if (!balance) {
+  balance = 1000;
+  localStorage.setItem("balance", balance);
+}
+
+document.getElementById("balance").innerText =
+  "Баланс: " + balance + " монет";
     function betYes() {
   localStorage.setItem("bet", "YES");
   showBet();
