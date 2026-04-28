@@ -37,14 +37,25 @@
     }
 
     function betYes() {
-      document.getElementById("result").innerText =
-        "Ты выбрал YES. Позиция сохранена локально.";
-    }
+  localStorage.setItem("bet", "YES");
+  showBet();
+}
 
-    function betNo() {
-      document.getElementById("result").innerText =
-        "Ты выбрал NO. Позиция сохранена локально.";
-    }
+function betNo() {
+  localStorage.setItem("bet", "NO");
+  showBet();
+}
+
+function showBet() {
+  const bet = localStorage.getItem("bet");
+
+  if (bet) {
+    document.getElementById("result").innerText =
+      "Твоя текущая позиция: " + bet;
+  }
+}
+
+showBet();
   </script>
 
 </body>
