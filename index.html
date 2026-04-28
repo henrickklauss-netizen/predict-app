@@ -5,14 +5,25 @@
   <title>Predict Market</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
-<body style="font-family: Arial; text-align: center; padding: 40px;">
+<body style="font-family: Arial; padding: 24px;">
 
   <h1>🚀 Predict Market</h1>
   <p id="user"></p>
 
-  <button onclick="bet()">
-    Сделать ставку
-  </button>
+  <div style="border: 1px solid #ddd; border-radius: 16px; padding: 20px; margin-top: 24px;">
+    <h2>BTC будет выше $100k до конца года?</h2>
+    <p>Текущая вероятность: <b>57%</b></p>
+
+    <button onclick="betYes()" style="padding: 12px 20px; margin-right: 8px;">
+      YES
+    </button>
+
+    <button onclick="betNo()" style="padding: 12px 20px;">
+      NO
+    </button>
+
+    <p id="result" style="margin-top: 16px;"></p>
+  </div>
 
   <script>
     const tg = window.Telegram.WebApp;
@@ -25,10 +36,18 @@
         "Привет, " + user.first_name;
     }
 
-    function bet() {
-      alert("Скоро тут будут реальные ставки 😏");
+    function betYes() {
+      document.getElementById("result").innerText =
+        "Ты выбрал YES. Позиция сохранена локально.";
+    }
+
+    function betNo() {
+      document.getElementById("result").innerText =
+        "Ты выбрал NO. Позиция сохранена локально.";
     }
   </script>
 
+</body>
+</html>
 </body>
 </html>
