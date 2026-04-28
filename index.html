@@ -45,12 +45,28 @@ if (!balance) {
 document.getElementById("balance").innerText =
   "Баланс: " + balance + " монет";
     function betYes() {
-  localStorage.setItem("bet", "YES");
-  showBet();
+  placeBet("YES");
 }
 
 function betNo() {
-  localStorage.setItem("bet", "NO");
+  placeBet("NO");
+}
+
+function placeBet(choice) {
+  let balance = Number(localStorage.getItem("balance") || 1000);
+
+  if (balance < 100) {
+    document.getElementById("result").innerText =
+      "Недостаточно монет для ставки";
+    return;
+  }
+
+  balance = balance - 100;
+  localStorage.setItem("balance", balance);
+  localStorage.setItem("bet", choice);
+
+  document.getElementById("balance").innerText =
+    "Баланс: " + balance + " монет";
   showBet();
 }
 
